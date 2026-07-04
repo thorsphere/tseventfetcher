@@ -15,18 +15,18 @@ import (
 type Mock struct{}
 
 // GetEvents returns a slice of Event for the specified date range, filtering the events based on the provided period.
-func (p *Mock) GetEvents(ctx context.Context, period *tstrading.Period) ([]*tstrading.Event, error) {
+func (p *Mock) GetEvents(ctx context.Context, period *tstrading.Period) ([]tstrading.Event, error) {
 	// Check if the provider or period is nil, and return an error if so
 	if (p == nil) || (period == nil) {
 		return nil, tserr.NilPtr()
 	}
 	// Filter events based on the provided period and return the matching events
-	evlist := []*tstrading.Event{}
+	evlist := []tstrading.Event{}
 	for _, event := range evs {
 		// Check if the event's time is within the specified period, and if so, add it to the list of events to return
 		if event.Time.After(period.From) && event.Time.Before(period.To) {
 			// If the event is within the period, append it to the list of events to return
-			evlist = append(evlist, event)
+			evlist = append(evlist, *event)
 		}
 	}
 	// Return the list of events that match the specified period and nil for the error
@@ -38,6 +38,6 @@ type MockErr struct{}
 
 // GetEvents returns an error indicating that the operation is forbidden,
 // simulating a failure scenario for testing purposes.
-func (p *MockErr) GetEvents(ctx context.Context, period *tstrading.Period) ([]*tstrading.Event, error) {
+func (p *MockErr) GetEvents(ctx context.Context, period *tstrading.Period) ([]tstrading.Event, error) {
 	return nil, tserr.Forbidden("MockErr")
 }

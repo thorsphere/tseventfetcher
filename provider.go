@@ -15,13 +15,13 @@ import (
 // Provider defines the interface for fetching economic events from a data source.
 type Provider interface {
 	// GetEvents returns a slice of Event for the specified date range.
-	GetEvents(ctx context.Context, period *tstrading.Period) ([]*tstrading.Event, error)
+	GetEvents(ctx context.Context, period *tstrading.Period) ([]tstrading.Event, error)
 }
 
 // FetchEvents uses the provided Provider to fetch events for the specified period.
 // If the provider or period is nil, it returns an error.
 // Otherwise, it returns the fetched events and nil for the error.
-func FetchEvents(ctx context.Context, p Provider, period *tstrading.Period) ([]*tstrading.Event, error) {
+func FetchEvents(ctx context.Context, p Provider, period *tstrading.Period) ([]tstrading.Event, error) {
 	// Check if the provider or period is nil, and return an error if so
 	if (p == nil) || (period == nil) {
 		return nil, tserr.NilPtr()
@@ -32,24 +32,15 @@ func FetchEvents(ctx context.Context, p Provider, period *tstrading.Period) ([]*
 	if err != nil {
 		return nil, err
 	}
-	// Filter out any nil events from the result
-	filtered := events[:0]
-	// Iterate over the events and append only non-nil ones
-	for _, e := range events {
-		if e != nil {
-			// If the event is non-nil, append it to the filtered slice
-			filtered = append(filtered, e)
-		}
-	}
-	// Return the filtered events and nil for the error
-	return filtered, nil
+	// Return the fetched events and nil to indicate success
+	return events, nil
 }
 
 // PrintEvents prints the details of each event in the provided slice of events.
 // If the slice is nil or empty, it returns an empty string.
 // Otherwise, it builds a string representation of each event using the String method of the Event struct,
 // and returns the combined string.
-func PrintEvents(events []*tstrading.Event) string {
+func PrintEvents(events []tstrading.Event) string {
 	// If there are no events, return an empty string
 	if len(events) == 0 {
 		return ""
@@ -57,10 +48,6 @@ func PrintEvents(events []*tstrading.Event) string {
 	// If there are events, iterate over each event and print its details using the String method of the Event struct.
 	var out strings.Builder
 	for _, event := range events {
-		// Skip nil events
-		if event == nil {
-			continue
-		}
 		// Write the string representation of the event to the output
 		out.WriteString(event.String())
 		// Write a newline character to the output

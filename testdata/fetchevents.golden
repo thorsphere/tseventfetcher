@@ -1,24 +1,32 @@
-  ┌────────────┬──────────────────────────────┐
-  │  Event     │  Non-Farm Payrolls           │
-  ├────────────┼──────────────────────────────┤
-  │  Country   │  US                          │
-  │  Time      │  2024-07-05T08:30:00Z        │
-  │  Impact    │  high                        │
-  │  Actual    │  200.0 K                     │
-  │  Estimate  │  180.0 K                     │
-  │  Previous  │  150.0 K                     │
-  │  Source    │  Bureau of Labor Statistics  │
-  └────────────┴──────────────────────────────┘
+  ┌─────────────────┬──────────────────────────────┐
+  │  Event          │  Non-Farm Payrolls           │
+  ├─────────────────┼──────────────────────────────┤
+  │  Country        │  US                          │
+  │  Time           │  2024-07-05T08:30:00Z        │
+  │  Impact         │  high                        │
+  │  Actual         │  200K                        │
+  │  Estimate       │  180K                        │
+  │  Previous       │  150K                        │
+  │  Surprise       │  -20K                        │
+  │  Surprise in %  │  -11.1%                      │
+  │  Change         │  50K                         │
+  │  Change in %    │  33.3%                       │
+  │  Source         │  Bureau of Labor Statistics  │
+  └─────────────────┴──────────────────────────────┘
 
-  ┌────────────┬───────────────────────────────┐
-  │  Event     │  GDP Growth Rate              │
-  ├────────────┼───────────────────────────────┤
-  │  Country   │  US                           │
-  │  Time      │  2024-07-10T08:30:00Z         │
-  │  Impact    │  medium                       │
-  │  Actual    │  3.5 %                        │
-  │  Estimate  │  3.0 %                        │
-  │  Previous  │  2.8 %                        │
-  │  Source    │  Bureau of Economic Analysis  │
-  └────────────┴───────────────────────────────┘
+  ┌─────────────────┬───────────────────────────────┐
+  │  Event          │  GDP Growth Rate              │
+  ├─────────────────┼───────────────────────────────┤
+  │  Country        │  US                           │
+  │  Time           │  2024-07-10T08:30:00Z         │
+  │  Impact         │  medium                       │
+  │  Actual         │  3.5%                         │
+  │  Estimate       │  3.0%                         │
+  │  Previous       │  2.8%                         │
+  │  Surprise       │  -0.5%                        │
+  │  Surprise in %  │  -16.7%                       │
+  │  Change         │  0.7%                         │
+  │  Change in %    │  25.0%                        │
+  │  Source         │  Bureau of Economic Analysis  │
+  └─────────────────┴───────────────────────────────┘
 
